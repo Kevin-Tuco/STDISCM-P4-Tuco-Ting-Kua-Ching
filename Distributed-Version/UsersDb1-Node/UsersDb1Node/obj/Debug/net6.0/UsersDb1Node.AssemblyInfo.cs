@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UsersDb1Node")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+702d1b540e4f3ffddf0cbd3247894aa51ae1a2f5")]
 [assembly: System.Reflection.AssemblyProductAttribute("UsersDb1Node")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UsersDb1Node")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

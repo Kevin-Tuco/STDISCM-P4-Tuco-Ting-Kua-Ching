@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\UsersDb1Node.props" />
+</Project>

@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "oggSHUCkoEzyV3M5wQbwKUW9vW3eCad+fLvA9QK4tW4=",
+  "Hash": "sVe6Ih2YFiWUr75QZrxtIEjk7WtRREvmYHVdcpcz5JQ=",
   "Source": "ViewNode",
   "BasePath": "_content/ViewNode",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

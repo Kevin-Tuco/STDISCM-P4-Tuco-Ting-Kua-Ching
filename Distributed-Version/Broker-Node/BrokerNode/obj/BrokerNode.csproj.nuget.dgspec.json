@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\Broker-Node\\BrokerNode\\BrokerNode.csproj": {}
+    "C:\\Users\\migur\\Desktop\\Project\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\Broker-Node\\BrokerNode\\BrokerNode.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\Broker-Node\\BrokerNode\\BrokerNode.csproj": {
+    "C:\\Users\\migur\\Desktop\\Project\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\Broker-Node\\BrokerNode\\BrokerNode.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\Broker-Node\\BrokerNode\\BrokerNode.csproj",
+        "projectUniqueName": "C:\\Users\\migur\\Desktop\\Project\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\Broker-Node\\BrokerNode\\BrokerNode.csproj",
         "projectName": "BrokerNode",
-        "projectPath": "D:\\GitHub\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\Broker-Node\\BrokerNode\\BrokerNode.csproj",
-        "packagesPath": "C:\\Users\\Anthony Ting\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\Broker-Node\\BrokerNode\\obj\\",
+        "projectPath": "C:\\Users\\migur\\Desktop\\Project\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\Broker-Node\\BrokerNode\\BrokerNode.csproj",
+        "packagesPath": "C:\\Users\\migur\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\migur\\Desktop\\Project\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\Broker-Node\\BrokerNode\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Anthony Ting\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\migur\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -32,7 +32,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net6.0": {
@@ -54,6 +60,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -62,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.428\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

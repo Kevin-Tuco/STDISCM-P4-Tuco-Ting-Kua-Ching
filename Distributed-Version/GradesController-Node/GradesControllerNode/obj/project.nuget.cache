@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "BuSUUcHta6a7eyRTnpBvQMyNrRr+uEj4SNWJBjiOUIPxSTsgfUUdWxD3pJkjEfg6fh8LfgOs0dwToHDvbv8XWw==",
+  "dgSpecHash": "L9Qr2L+iRvU=",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\GradesController-Node\\GradesControllerNode\\GradesControllerNode.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\migur\\Desktop\\Project\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\GradesController-Node\\GradesControllerNode\\GradesControllerNode.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\migur\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\migur\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\migur\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\migur\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.36\\microsoft.netcore.app.host.win-x64.6.0.36.nupkg.sha512"
+  ],
   "logs": []
 }

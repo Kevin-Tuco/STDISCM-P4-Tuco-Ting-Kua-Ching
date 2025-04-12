@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "5Caj9S/IXRHRCSEVtvZ89DXupSMie43PesFMfsrie0QCODhIpmJt2jNh62A1zVqmD+NCS/6bQZdflx/hF2C8CQ==",
+  "dgSpecHash": "hipysAG+DiE=",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\View-Node\\ViewNode\\ViewNode.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\migur\\Desktop\\Project\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\View-Node\\ViewNode\\ViewNode.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\migur\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\migur\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\migur\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\migur\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.36\\microsoft.netcore.app.host.win-x64.6.0.36.nupkg.sha512"
+  ],
   "logs": []
 }

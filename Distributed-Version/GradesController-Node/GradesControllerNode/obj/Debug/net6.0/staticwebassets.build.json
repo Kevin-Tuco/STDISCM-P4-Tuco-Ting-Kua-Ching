@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "zSAks7jPZEQfMiUAznJlERtcWxt21KTuyrGh97lAYFI=",
+  "Hash": "93I+nt0K5z2ZRghPJ8GDub5DYLa2wpo8er30kImUEyM=",
   "Source": "GradesControllerNode",
   "BasePath": "_content/GradesControllerNode",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

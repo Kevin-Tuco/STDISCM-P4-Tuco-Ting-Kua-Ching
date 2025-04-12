@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "oXRiPmFWQSxMs1MHGapMfhTMjwh2k7m4sslUQHl4junaW877pC9DnEOxjzJPs1kAVPRX2B1ncSRp/eNIUtNuHg==",
+  "dgSpecHash": "R9zLIHT88jU=",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\CoursesController-Node\\CoursesControllerNode\\CoursesControllerNode.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\migur\\Desktop\\Project\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\CoursesController-Node\\CoursesControllerNode\\CoursesControllerNode.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\migur\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\migur\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\migur\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\migur\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.36\\microsoft.netcore.app.host.win-x64.6.0.36.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "It/XiprZ3ynaSpnWmLR9nIL/XOT141iFfPQGAPb+AkM=",
+  "Hash": "qOU3cX+d3vTd+8xBUThzcgWaS6bAaRFokUYvgGDzrhk=",
   "Source": "AuthControllerNode",
   "BasePath": "_content/AuthControllerNode",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

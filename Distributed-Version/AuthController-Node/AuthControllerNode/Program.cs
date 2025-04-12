@@ -12,7 +12,25 @@ using System.Collections.Generic;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
+
+var allowedOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: allowedOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:5001")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                      });
+});
+
+builder.Services.AddHttpClient();
+
 var app = builder.Build();
+
+// Apply CORS before the endpoints
+app.UseCors(allowedOrigins);
 
 string secretKey = "YourVeryVeryVerySecureSecretKey123!";
 string brokerUrl = "http://localhost:5000";
