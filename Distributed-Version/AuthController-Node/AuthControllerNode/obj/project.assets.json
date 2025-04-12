@@ -314,11 +314,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj",
+      "projectUniqueName": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\P4-Final\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj",
       "projectName": "AuthControllerNode",
-      "projectPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj",
+      "projectPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\P4-Final\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj",
       "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\obj\\",
+      "outputPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\P4-Final\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config"
