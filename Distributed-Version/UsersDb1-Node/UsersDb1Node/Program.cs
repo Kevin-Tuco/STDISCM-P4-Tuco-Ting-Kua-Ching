@@ -15,6 +15,15 @@ EnsureDatabase(dbPath);
 
 app.MapGet("/status", () => Results.Ok(new { Name = "UsersDb1", Status = "Online" }));
 
+app.MapPost("/config", async (HttpContext context) =>
+{
+    using var reader = new StreamReader(context.Request.Body);
+    string debugMessage = await reader.ReadToEndAsync();
+    Console.WriteLine($"[UserDb1] Received config update: {debugMessage}");
+    return Results.Ok(new { Message = "Config updated on UserDb1" });
+});
+
+
 // Main handler for queries
 app.MapPost("/query", async (HttpContext context) =>
 {
