@@ -146,13 +146,13 @@
                     loginSection.classList.add('hidden');
                     dashboard.classList.remove('hidden');
                     hideError();
-                    if (role === 'student') {
+                    if (role == 'student') {
                         studentDashboard.classList.remove('hidden');
                         showStudentTab('courses');
                         loadCourses();
                         loadGrades();
                         loadEnrolledCourses();
-                    } else if (role === 'teacher') {
+                    } else if (role == 'teacher') {
                         teacherDashboard.classList.remove('hidden');
                         loadTeacherCourses(payload.user_id);
                     }
@@ -181,6 +181,7 @@
                     body: JSON.stringify({ action: 'getCourses' })
                 });
                 const courses = await res.json();
+                console.log(courses);
                 const tableBody = document.querySelector('#course-table tbody');
                 tableBody.innerHTML = '';
                 const select = document.getElementById('enroll-course-select');
@@ -215,6 +216,7 @@
                     body: JSON.stringify({ action: 'getEnrolled' })
                 });
                 const courses = await res.json();
+                console.log(courses);
                 const tableBody = document.querySelector('#enrolled-table tbody');
                 tableBody.innerHTML = '';
                 courses.forEach(c => {
@@ -237,6 +239,7 @@
                     body: JSON.stringify({ action: 'getGrades' })
                 });
                 const grades = await res.json();
+                console.log(grades);
                 const tableBody = document.querySelector('#grade-table tbody');
                 tableBody.innerHTML = '';
                 grades.forEach(g => {
