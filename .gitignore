@@ -1,0 +1,65 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Rider IDE
+.idea/
+*.sln.iml
+
+# NuGet packages
+*.nupkg
+packages/
+# Uncomment below if you use package restore
+# !packages/build/
+
+# Microsoft Azure Web Apps
+.publish/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# DotCover
+*.dotCover
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Auto-generated database files (e.g., for SQLite)
+*.db
+*.db-shm
+*.db-wal
+
+# Configuration transforms
+*.Release.config
+*.Debug.config
+
+# Secrets / credentials (if any)
+secrets.json
+
+# Deployment files
+*.deploy.cmd
+*.deploy-readme.txt
+
+# Other build artifacts
+project.lock.json
+project.fragment.lock.json
+
+# Global.json cache
+global.json.swp
+
+# JetBrains Rider Cache
+.idea/
