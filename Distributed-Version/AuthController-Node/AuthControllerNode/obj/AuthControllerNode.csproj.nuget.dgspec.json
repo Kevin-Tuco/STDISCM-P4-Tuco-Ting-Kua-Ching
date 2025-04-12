@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\P4-Final\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj": {}
+    "D:\\GitHub\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\P4-Final\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj": {
+    "D:\\GitHub\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\P4-Final\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj",
+        "projectUniqueName": "D:\\GitHub\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj",
         "projectName": "AuthControllerNode",
-        "projectPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\P4-Final\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj",
-        "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\P4-Final\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\obj\\",
+        "projectPath": "D:\\GitHub\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj",
+        "packagesPath": "C:\\Users\\Anthony Ting\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Anthony Ting\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -62,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.414\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.428\\RuntimeIdentifierGraph.json"
         }
       }
     }

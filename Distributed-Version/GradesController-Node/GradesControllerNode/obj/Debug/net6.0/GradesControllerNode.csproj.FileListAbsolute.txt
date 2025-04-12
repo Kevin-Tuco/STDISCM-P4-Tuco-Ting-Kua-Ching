@@ -25,3 +25,24 @@ C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM-P4-Tuco-Ting-Ku
 C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.pdb
 C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.genruntimeconfig.cache
 C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\ref\GradesControllerNode.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\bin\Debug\net6.0\appsettings.Development.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\bin\Debug\net6.0\appsettings.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\bin\Debug\net6.0\GradesControllerNode.exe
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\bin\Debug\net6.0\GradesControllerNode.deps.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\bin\Debug\net6.0\GradesControllerNode.runtimeconfig.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\bin\Debug\net6.0\GradesControllerNode.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\bin\Debug\net6.0\GradesControllerNode.pdb
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.csproj.AssemblyReference.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.AssemblyInfoInputs.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.AssemblyInfo.cs
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.csproj.CoreCompileInputs.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.MvcApplicationPartsAssemblyInfo.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\staticwebassets.build.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\staticwebassets.development.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\scopedcss\bundle\GradesControllerNode.styles.css
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\refint\GradesControllerNode.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.pdb
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.genruntimeconfig.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\ref\GradesControllerNode.dll

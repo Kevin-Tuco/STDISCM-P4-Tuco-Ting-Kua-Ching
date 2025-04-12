@@ -19,3 +19,24 @@ C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-
 C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\ViewNode.pdb
 C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\ViewNode.genruntimeconfig.cache
 C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\ref\ViewNode.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\bin\Debug\net6.0\appsettings.Development.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\bin\Debug\net6.0\appsettings.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\bin\Debug\net6.0\ViewNode.exe
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\bin\Debug\net6.0\ViewNode.deps.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\bin\Debug\net6.0\ViewNode.runtimeconfig.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\bin\Debug\net6.0\ViewNode.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\bin\Debug\net6.0\ViewNode.pdb
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\ViewNode.csproj.AssemblyReference.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\ViewNode.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\ViewNode.AssemblyInfoInputs.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\ViewNode.AssemblyInfo.cs
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\ViewNode.csproj.CoreCompileInputs.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\ViewNode.MvcApplicationPartsAssemblyInfo.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\staticwebassets.build.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\staticwebassets.development.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\scopedcss\bundle\ViewNode.styles.css
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\ViewNode.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\refint\ViewNode.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\ViewNode.pdb
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\ViewNode.genruntimeconfig.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\View-Node\ViewNode\obj\Debug\net6.0\ref\ViewNode.dll

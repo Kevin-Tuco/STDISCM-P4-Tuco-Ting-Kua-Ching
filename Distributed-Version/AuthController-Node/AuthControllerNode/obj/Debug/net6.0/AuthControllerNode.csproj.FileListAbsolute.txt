@@ -54,3 +54,29 @@ C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\P4-Final\STDISCM-P4-Tuc
 C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\P4-Final\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\AuthControllerNode.pdb
 C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\P4-Final\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\AuthControllerNode.genruntimeconfig.cache
 C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\P4-Final\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\ref\AuthControllerNode.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\bin\Debug\net6.0\appsettings.Development.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\bin\Debug\net6.0\appsettings.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\bin\Debug\net6.0\AuthControllerNode.exe
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\bin\Debug\net6.0\AuthControllerNode.deps.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\bin\Debug\net6.0\AuthControllerNode.runtimeconfig.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\bin\Debug\net6.0\AuthControllerNode.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\bin\Debug\net6.0\AuthControllerNode.pdb
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\AuthControllerNode.csproj.AssemblyReference.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\AuthControllerNode.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\AuthControllerNode.AssemblyInfoInputs.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\AuthControllerNode.AssemblyInfo.cs
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\AuthControllerNode.csproj.CoreCompileInputs.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\AuthControllerNode.MvcApplicationPartsAssemblyInfo.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\staticwebassets.build.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\staticwebassets.development.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\scopedcss\bundle\AuthControllerNode.styles.css
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\AuthControllerNode.csproj.CopyComplete
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\AuthControllerNode.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\refint\AuthControllerNode.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\AuthControllerNode.pdb
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\AuthControllerNode.genruntimeconfig.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\AuthController-Node\AuthControllerNode\obj\Debug\net6.0\ref\AuthControllerNode.dll

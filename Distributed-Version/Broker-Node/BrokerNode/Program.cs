@@ -144,6 +144,8 @@ app.MapPost("/api/node/update/{nodeName}", async (string nodeName, NodeUpdate up
 // Forwards a message from the View to the designated controller if it is activated.
 app.MapPost("/api/forward/controller/{controllerName}", async (string controllerName, HttpContext context) =>
 {
+    Console.WriteLine($"[Broker] RECEIVED: {controllerName}");  // debugging
+
     if (!nodes.TryGetValue(controllerName, out var controller))
     {
         return Results.NotFound($"Controller '{controllerName}' not found.");

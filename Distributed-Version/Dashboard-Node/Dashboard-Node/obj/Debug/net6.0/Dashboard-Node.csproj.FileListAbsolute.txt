@@ -24,3 +24,29 @@ C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-
 C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\Dashboard-Node.pdb
 C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\Dashboard-Node.genruntimeconfig.cache
 C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\ref\Dashboard-Node.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\bin\Debug\net6.0\appsettings.Development.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\bin\Debug\net6.0\appsettings.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\bin\Debug\net6.0\Dashboard-Node.staticwebassets.runtime.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\bin\Debug\net6.0\Dashboard-Node.exe
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\bin\Debug\net6.0\Dashboard-Node.deps.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\bin\Debug\net6.0\Dashboard-Node.runtimeconfig.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\bin\Debug\net6.0\Dashboard-Node.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\bin\Debug\net6.0\Dashboard-Node.pdb
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\Dashboard-Node.csproj.AssemblyReference.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\Dashboard-Node.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\Dashboard-Node.AssemblyInfoInputs.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\Dashboard-Node.AssemblyInfo.cs
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\Dashboard-Node.csproj.CoreCompileInputs.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\Dashboard-Node.MvcApplicationPartsAssemblyInfo.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\Dashboard-Node.RazorAssemblyInfo.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\Dashboard-Node.RazorAssemblyInfo.cs
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\staticwebassets.build.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\staticwebassets.development.json
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\scopedcss\bundle\Dashboard-Node.styles.css
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\scopedcss\projectbundle\Dashboard-Node.bundle.scp.css
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\Dashboard-Node.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\refint\Dashboard-Node.dll
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\Dashboard-Node.pdb
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\Dashboard-Node.genruntimeconfig.cache
+D:\GitHub\STDISCM-P4-Tuco-Ting-Kua-Ching\Distributed-Version\Dashboard-Node\Dashboard-Node\obj\Debug\net6.0\ref\Dashboard-Node.dll
