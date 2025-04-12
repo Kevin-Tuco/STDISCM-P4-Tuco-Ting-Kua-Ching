@@ -1,0 +1,6 @@
+C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.csproj.AssemblyReference.cache
+C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.AssemblyInfoInputs.cache
+C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.AssemblyInfo.cs
+C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.csproj.CoreCompileInputs.cache
+C:\Users\kevin\OneDrive\Desktop\College\4th Year\STDISCM\STDISCM_P4\Distributed-Version\GradesController-Node\GradesControllerNode\obj\Debug\net6.0\GradesControllerNode.MvcApplicationPartsAssemblyInfo.cache
