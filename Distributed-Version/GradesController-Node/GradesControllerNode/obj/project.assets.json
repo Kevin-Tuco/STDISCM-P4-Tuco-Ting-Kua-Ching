@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM_P4\\Distributed-Version\\GradesController-Node\\GradesControllerNode\\GradesControllerNode.csproj",
+      "projectUniqueName": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\GradesController-Node\\GradesControllerNode\\GradesControllerNode.csproj",
       "projectName": "GradesControllerNode",
-      "projectPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM_P4\\Distributed-Version\\GradesController-Node\\GradesControllerNode\\GradesControllerNode.csproj",
+      "projectPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\GradesController-Node\\GradesControllerNode\\GradesControllerNode.csproj",
       "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM_P4\\Distributed-Version\\GradesController-Node\\GradesControllerNode\\obj\\",
+      "outputPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\GradesController-Node\\GradesControllerNode\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config"

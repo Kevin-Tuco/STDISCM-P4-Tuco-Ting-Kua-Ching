@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM_P4\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj": {}
+    "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM_P4\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj": {
+    "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM_P4\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj",
+        "projectUniqueName": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj",
         "projectName": "AuthControllerNode",
-        "projectPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM_P4\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj",
+        "projectPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\AuthControllerNode.csproj",
         "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM_P4\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\obj\\",
+        "outputPath": "C:\\Users\\kevin\\OneDrive\\Desktop\\College\\4th Year\\STDISCM\\STDISCM-P4-Tuco-Ting-Kua-Ching\\Distributed-Version\\AuthController-Node\\AuthControllerNode\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -37,6 +37,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.15.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

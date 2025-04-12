@@ -50,7 +50,8 @@ app.MapPost("/process", async (HttpContext context) =>
     var httpClient = httpClientFactory.CreateClient();
     HttpResponseMessage statusResponse = await httpClient.GetAsync($"{brokerUrl}/api/nodes");
     if (!statusResponse.IsSuccessStatusCode)
-        return Results.StatusCode(500, new { message = "Failed to retrieve node status from broker." });
+        return Results.Problem(detail: "Failed to retrieve node status from broker.", statusCode: 500);
+    
     string statusContent = await statusResponse.Content.ReadAsStringAsync();
     var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
     List<NodeStatus> allNodes = JsonSerializer.Deserialize<List<NodeStatus>>(statusContent, options);
@@ -62,6 +63,7 @@ app.MapPost("/process", async (HttpContext context) =>
         if (!gradesNodes.Any())
             return Results.BadRequest(new { message = "No Grades DB nodes are online." });
         NodeStatus chosenGradesDb = gradesNodes.OrderBy(n => n.Latency).First();
+        
         var payloadObj = new { action = "getGrades", studentId };
         var payloadStr = JsonSerializer.Serialize(payloadObj);
         var contentPayload = new StringContent(payloadStr, Encoding.UTF8, "application/json");
@@ -70,7 +72,7 @@ app.MapPost("/process", async (HttpContext context) =>
         if (!dbResponse.IsSuccessStatusCode)
         {
             string errorMsg = await dbResponse.Content.ReadAsStringAsync();
-            return Results.StatusCode((int)dbResponse.StatusCode, new { message = errorMsg });
+            return Results.Problem(detail: errorMsg, statusCode: (int)dbResponse.StatusCode);
         }
         string dbResultRaw = await dbResponse.Content.ReadAsStringAsync();
         var grades = JsonSerializer.Deserialize<List<GradeRecord>>(dbResultRaw, options);
@@ -124,7 +126,7 @@ app.MapPost("/process", async (HttpContext context) =>
         if (!gradeResponse.IsSuccessStatusCode)
         {
             string errorMsg = await gradeResponse.Content.ReadAsStringAsync();
-            return Results.StatusCode((int)gradeResponse.StatusCode, new { message = errorMsg });
+            return Results.Problem(detail: errorMsg, statusCode: (int)gradeResponse.StatusCode);
         }
 
         // Use Courses DB node to remove the enrollment record.
@@ -139,7 +141,7 @@ app.MapPost("/process", async (HttpContext context) =>
         if (!removeResponse.IsSuccessStatusCode)
         {
             string errorMsg = await removeResponse.Content.ReadAsStringAsync();
-            return Results.StatusCode((int)removeResponse.StatusCode, new { message = errorMsg });
+            return Results.Problem(detail: errorMsg, statusCode: (int)removeResponse.StatusCode);
         }
         string uploadMsg = gradeValue < 1.0
             ? "Grade uploaded. Student has failed and must retake the course."
@@ -156,14 +158,23 @@ app.Run();
 
 // Record definitions.
 record NodeStatus(string Name, string Url, bool IsOnline, bool IsActivated, int Latency);
+
 record GradeRecord
 {
     public int CourseId { get; init; }
     public double GradeValue { get; init; }
     public string CourseName { get; set; } = "N/A";
 }
+
 record Course
 {
     public int CourseId { get; init; }
-    public string CourseName { get; init; }
+    public string CourseName { get; init; } = "N/A";
+}
+
+record User
+{
+    public int UserId { get; init; }
+    public string Username { get; init; }
+    public string Role { get; init; }
 }
