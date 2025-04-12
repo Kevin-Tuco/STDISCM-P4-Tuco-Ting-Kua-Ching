@@ -9,13 +9,13 @@ var app = builder.Build();
 
 string brokerUrl = "http://localhost:5000";
 
-// GET /status: Reports that the CoursesController is online.
+// GET /status endpoint remains the same
 app.MapGet("/status", () =>
 {
     return Results.Ok(new { Name = "CoursesController", Status = "Online" });
 });
 
-// POST /config: Receives configuration updates from the Broker.
+// POST /config remains the same
 app.MapPost("/config", async (HttpContext context) =>
 {
     using var reader = new StreamReader(context.Request.Body);
@@ -24,8 +24,7 @@ app.MapPost("/config", async (HttpContext context) =>
     return Results.Ok(new { Message = "Config updated on CoursesController" });
 });
 
-// POST /process: Processes forwarded requests.
-// Supports actions: "getCourses" and "getEnrolled".
+// POST /process: Forwards requests to the appropriate Courses DB node.
 app.MapPost("/process", async (HttpContext context) =>
 {
     using var reader = new StreamReader(context.Request.Body);
@@ -40,18 +39,20 @@ app.MapPost("/process", async (HttpContext context) =>
 
     string action = actionElem.GetString() ?? string.Empty;
 
+    // Determine studentId if needed (for enroll and getEnrolled)
     int studentId = 0;
-    if (action == "getEnrolled")
+    if (action == "getEnrolled" || action == "enroll")
     {
-        // For getEnrolled, try to get studentId from the payload,
-        // or fall back to extracting it from user claims.
+        //Try to get studentId from the JSON payload first…
         if (root.TryGetProperty("studentId", out JsonElement studentIdElem))
-        {
+        {   
             studentId = studentIdElem.GetInt32();
         }
+
+        // Otherwise, try to extract it from authenticated user claims.
         else if (context.User.Identity is { IsAuthenticated: true })
         {
-            int.TryParse(context.User.FindFirst("user_id")?.Value, out studentId);
+            int.TryParse(context.User.FindFirst("studentId")?.Value, out studentId);
         }
         if (studentId == 0)
         {
@@ -62,6 +63,7 @@ app.MapPost("/process", async (HttpContext context) =>
     var httpClientFactory = context.RequestServices.GetRequiredService<IHttpClientFactory>();
     var httpClient = httpClientFactory.CreateClient();
 
+    // Get the broker nodes status
     HttpResponseMessage statusResponse = await httpClient.GetAsync($"{brokerUrl}/api/nodes");
     if (!statusResponse.IsSuccessStatusCode)
         return Results.Problem(detail: "Failed to retrieve node status from broker.", statusCode: 500);
@@ -77,15 +79,27 @@ app.MapPost("/process", async (HttpContext context) =>
 
     NodeStatus chosenCoursesDb = coursesNodes.OrderBy(n => n.Latency).First();
 
+    // Build the payload object for forwarding.
     object payloadObj;
     if (action == "getCourses")
     {
-        // For getCourses, forward only the action.
         payloadObj = new { action = "getCourses" };
     }
     else if (action == "getEnrolled")
     {
         payloadObj = new { action = "getEnrolled", studentId = studentId };
+    }
+    else if (action == "enroll")
+    {
+        // Extract courseId from payload
+        int courseId = root.GetProperty("courseId").GetInt32();
+        // Extract studentId from payload (which you are now sending)
+        studentId = root.TryGetProperty("studentId", out JsonElement sElem) ? sElem.GetInt32() : 0;
+        if (studentId == 0)
+        {
+            return Results.BadRequest(new { message = "Student ID missing." });
+        }
+        payloadObj = new { action = "enroll", courseId = courseId };
     }
     else
     {
@@ -93,10 +107,23 @@ app.MapPost("/process", async (HttpContext context) =>
     }
 
     string forwardPayload = JsonSerializer.Serialize(payloadObj);
-    var contentPayload = new StringContent(forwardPayload, Encoding.UTF8, "application/json");
 
+    // Create an HttpRequestMessage so that we can add a header if needed.
+    var requestMessage = new HttpRequestMessage(System.Net.Http.HttpMethod.Post, $"{chosenCoursesDb.Url}/query")
+    {
+        Content = new StringContent(forwardPayload, Encoding.UTF8, "application/json")
+    };
+
+    // For actions that require a studentId (enroll and getEnrolled), add it as a header.
+    if (action == "getEnrolled" || action == "enroll")
+    {
+        requestMessage.Headers.Add("studentId", studentId.ToString());
+    }
+
+    // Apply the simulated latency.
     await Task.Delay(chosenCoursesDb.Latency);
-    HttpResponseMessage dbResponse = await httpClient.PostAsync($"{chosenCoursesDb.Url}/query", contentPayload);
+
+    HttpResponseMessage dbResponse = await httpClient.SendAsync(requestMessage);
     if (!dbResponse.IsSuccessStatusCode)
     {
         string errorMsg = await dbResponse.Content.ReadAsStringAsync();

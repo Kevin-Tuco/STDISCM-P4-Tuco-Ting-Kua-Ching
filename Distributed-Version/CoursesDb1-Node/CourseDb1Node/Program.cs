@@ -104,7 +104,7 @@ app.MapPost("/query", async (HttpContext context) =>
 
     else if (action == "enroll")
     {
-        if (!context.Request.Headers.TryGetValue("user_id", out var studentIdHeader))
+        if (!context.Request.Headers.TryGetValue("studentId", out var studentIdHeader))
             return Results.BadRequest(new { message = "Student ID missing" });
         int studentId = int.Parse(studentIdHeader!);
         int courseId = payload.GetProperty("courseId").GetInt32();
@@ -140,8 +140,42 @@ void EnsureDatabase(string path)
 {
     if (!File.Exists(path))
     {
-        Console.WriteLine("[CoursesDB 1] Copying database from Courses.db...");
-        File.Copy("Courses.db", path, overwrite: true);
-        Console.WriteLine("[CoursesDB 1] Database copy complete.");
+        if (!File.Exists(path))
+    {
+        Console.WriteLine("[CourseDb1] Creating database...");
+        using var conn = new SqliteConnection($"Data Source={path}");
+        conn.Open();
+
+        var cmd = conn.CreateCommand();
+        cmd.CommandText = @"
+        CREATE TABLE IF NOT EXISTS Courses (
+        course_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        course_name VARCHAR(100) NOT NULL,
+        description TEXT,
+        max_slots INT NOT NULL,
+        teacher_id INT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+        CREATE TABLE IF NOT EXISTS Enrollment (
+        enrollment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        student_id INT NOT NULL,
+        course_id INT NOT NULL,
+        enrollment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE (student_id, course_id)
+        );
+        INSERT INTO Courses (course_id, course_name, description, max_slots, teacher_id, created_at) VALUES
+        (1, 'Introduction to Computer Science', 'Learn the basics of computing and programming.', 30, 1, '2025-04-07 00:48:31'),
+        (2, 'Advanced Mathematics', 'Covers calculus, algebra, and statistics.', 25, 2, '2025-04-07 00:48:31'),
+        (3, 'English Literature', 'Study of classic and modern literary works.', 20, 3, '2025-04-07 00:48:31'),
+        (4, 'Physics Fundamentals', 'Principles of motion, energy, and matter.', 30, 4, '2025-04-07 00:48:31'),
+        (5, 'World History', 'Major events and civilizations from ancient to modern times.', 25, 5, '2025-04-07 00:48:31'),
+        (6, 'Basic Accounting', 'Introduction to financial and managerial accounting.', 30, 1, '2025-04-07 00:48:31'),
+        (7, 'Environmental Science', 'Understanding ecosystems, pollution, and sustainability.', 25, 2, '2025-04-07 00:48:31'),
+        (8, 'Programming in Python', 'Hands-on course in Python for beginners.', 30, 3, '2025-04-07 00:48:31'),
+        (9, 'Web Development', 'Front-end and back-end web technologies.', 25, 4, '2025-04-07 00:48:31'),
+        (10, 'Philosophy & Logic', 'Critical thinking, ethics, and logic fundamentals.', 20, 5, '2025-04-07 00:48:31');
+        ";
+        cmd.ExecuteNonQuery();
+    }
     }
 }

@@ -141,7 +141,7 @@ string GenerateJwtToken(User user, string secretKey)
     var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
     var claims = new List<Claim>
     {
-        new Claim("user_id", user.UserId.ToString()),
+        new Claim("studentId", user.UserId.ToString()),
         new Claim(ClaimTypes.Name, user.Username),
         new Claim(ClaimTypes.Role, user.Role)
     };

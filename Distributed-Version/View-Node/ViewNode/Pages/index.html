@@ -115,6 +115,7 @@
         // Set the broker's base URL (all API calls go through the broker)
         const brokerBaseUrl = 'http://localhost:5000';
         let jwtToken = null;
+        let loggedInUserId = null;
     
         const loginForm = document.getElementById('login-form');
         const loginSection = document.getElementById('login-section');
@@ -141,7 +142,8 @@
                     jwtToken = data.token;
                     const payload = JSON.parse(atob(jwtToken.split('.')[1]));
                     const role = payload.role || payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-    
+                    // Extract the student id from the token payload.
+                    loggedInUserId = parseInt(payload.studentId);
                     userNameDisplay.textContent = username;
                     loginSection.classList.add('hidden');
                     dashboard.classList.remove('hidden');
@@ -181,7 +183,7 @@
                     body: JSON.stringify({ action: 'getCourses' })
                 });
                 const courses = await res.json();
-                console.log(courses);
+                console.log("Courses response:", courses);
                 const tableBody = document.querySelector('#course-table tbody');
                 tableBody.innerHTML = '';
                 const select = document.getElementById('enroll-course-select');
@@ -213,7 +215,7 @@
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer ' + jwtToken
                     },
-                    body: JSON.stringify({ action: 'getEnrolled' })
+                    body: JSON.stringify({ action: 'getEnrolled' , studentId: loggedInUserId})
                 });
                 const courses = await res.json();
                 console.log(courses);
@@ -236,7 +238,7 @@
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer ' + jwtToken
                     },
-                    body: JSON.stringify({ action: 'getGrades' })
+                    body: JSON.stringify({ action: 'getGrades' , studentId: loggedInUserId})
                 });
                 const grades = await res.json();
                 console.log(grades);
@@ -263,6 +265,10 @@
         document.getElementById('enroll-button').addEventListener('click', async () => {
             const courseId = document.getElementById('enroll-course-select').value;
             if (!courseId) return alert('Select a course.');
+            // Make sure the loggedInUserId is set (you might want to check it)
+            if (!loggedInUserId) {
+                return showError("Student ID is missing. Please re-login.");
+            }
             try {
                 const res = await fetch(`${brokerBaseUrl}/api/forward/controller/CoursesController`, {
                     method: 'POST',
@@ -270,7 +276,7 @@
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer ' + jwtToken
                     },
-                    body: JSON.stringify({ action: 'enroll', courseId: parseInt(courseId) })
+                    body: JSON.stringify({ action: 'enroll', courseId: parseInt(courseId) , studentId: loggedInUserId})
                 });
                 const data = await res.json();
                 if (res.ok) {
@@ -286,6 +292,7 @@
                 showError('Enrollment error: ' + error);
             }
         });
+
     
         async function loadTeacherCourses(teacherId) {
             try {

@@ -64,6 +64,7 @@ app.MapPost("/process", async (HttpContext context) =>
             return Results.BadRequest(new { message = "No Grades DB nodes are online." });
         NodeStatus chosenGradesDb = gradesNodes.OrderBy(n => n.Latency).First();
         
+        
         var payloadObj = new { action = "getGrades", studentId };
         var payloadStr = JsonSerializer.Serialize(payloadObj);
         var contentPayload = new StringContent(payloadStr, Encoding.UTF8, "application/json");
