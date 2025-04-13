@@ -156,35 +156,61 @@ app.MapPost("/api/node/update/{nodeName}", async (string nodeName, NodeUpdate up
 // Forwards a message from the View to the designated controller if it is activated.
 app.MapPost("/api/forward/controller/{controllerName}", async (string controllerName, HttpContext context) =>
 {
-    Console.WriteLine($"[Broker] RECEIVED: {controllerName}");  // debugging
+    Console.WriteLine($"[Broker] RECEIVED: {controllerName}");  // Debug
 
     if (!nodes.TryGetValue(controllerName, out var controller))
-    {
         return Results.NotFound($"Controller '{controllerName}' not found.");
-    }
+
     if (!controller.IsOnline || !controller.IsActivated)
-    {
         return Results.BadRequest($"Controller '{controllerName}' is not activated.");
-    }
-    // Wait for the latency value (in milliseconds) before forwarding.
+
     await Task.Delay(controller.Latency);
 
-    // Forward the call. (This assumes the controller has a /process endpoint.)
     try
     {
         var client = httpClientFactory.CreateClient();
-        // Read payload from the original request.
-        var payload = await new System.IO.StreamReader(context.Request.Body).ReadToEndAsync();
-        var content = new StringContent(payload, System.Text.Encoding.UTF8, "application/json");
-        var response = await client.PostAsync($"{controller.Url}/process", content);
+
+        // ✅ Read payload once
+        var payload = await new StreamReader(context.Request.Body).ReadToEndAsync();
+
+        // ✅ Determine correct endpoint path
+        string targetPath = controller.Name.Contains("Courses") || controller.Name.Contains("Grades")
+            ? "/query"
+            : "/process";
+
+        // ✅ Build request
+        var request = new HttpRequestMessage(HttpMethod.Post, $"{controller.Url}/process")
+        {
+            Content = new StringContent(payload, System.Text.Encoding.UTF8, "application/json")
+        };
+
+        // ✅ Forward headers
+        if (context.Request.Headers.TryGetValue("Authorization", out var authHeader))
+            request.Headers.Add("Authorization", authHeader.ToString());
+
+        if (context.Request.Headers.TryGetValue("studentId", out var studentIdHeader))
+            request.Headers.Add("studentId", studentIdHeader.ToString());
+
+        // ✅ Debug log
+        Console.WriteLine($"[Broker] → Sending to: {request.RequestUri}");
+        Console.WriteLine($"[Broker] → Payload: {payload}");
+
+        // ✅ Send request
+        var response = await client.SendAsync(request);
+        Console.WriteLine($"[Broker] ← Status code: {response.StatusCode}");
+
         var responseBody = await response.Content.ReadAsStringAsync();
+        Console.WriteLine($"[Broker] ← Raw response body: {responseBody}");
+
         return Results.Content(responseBody, "application/json");
     }
     catch (Exception ex)
     {
+        Console.WriteLine($"[Broker] ❌ Error: {ex.Message}");
         return Results.Problem($"Error forwarding to controller '{controllerName}': {ex.Message}");
     }
 });
+
 
 // Endpoint: POST /api/forward/db
 // Forwards a DB query from a controller to one of the DB nodes according to selection rules.

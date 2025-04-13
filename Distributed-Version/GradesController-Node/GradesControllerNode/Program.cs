@@ -41,11 +41,10 @@ app.MapPost("/process", async (HttpContext context) =>
     string action = actionElem.GetString();
 
     int studentId = 0;
-    if (context.User.Identity is { IsAuthenticated: true })
+    if (context.Request.Headers.TryGetValue("studentId", out var studentIdHeader))
     {
-        int.TryParse(context.User.FindFirst("user_id")?.Value, out studentId);
+        int.TryParse(studentIdHeader.ToString(), out studentId);
     }
-
     var httpClientFactory = context.RequestServices.GetRequiredService<IHttpClientFactory>();
     var httpClient = httpClientFactory.CreateClient();
     HttpResponseMessage statusResponse = await httpClient.GetAsync($"{brokerUrl}/api/nodes");
@@ -68,8 +67,14 @@ app.MapPost("/process", async (HttpContext context) =>
         var payloadObj = new { action = "getGrades", studentId };
         var payloadStr = JsonSerializer.Serialize(payloadObj);
         var contentPayload = new StringContent(payloadStr, Encoding.UTF8, "application/json");
+
+        var requestMessage = new HttpRequestMessage(HttpMethod.Post, $"{chosenGradesDb.Url}/query")
+        {
+            Content = contentPayload
+        };
+        requestMessage.Headers.Add("studentId", studentId.ToString());
         await Task.Delay(chosenGradesDb.Latency);
-        HttpResponseMessage dbResponse = await httpClient.PostAsync($"{chosenGradesDb.Url}/query", contentPayload);
+        HttpResponseMessage dbResponse = await httpClient.SendAsync(requestMessage);
         if (!dbResponse.IsSuccessStatusCode)
         {
             string errorMsg = await dbResponse.Content.ReadAsStringAsync();
@@ -108,9 +113,18 @@ app.MapPost("/process", async (HttpContext context) =>
         {
             return Results.BadRequest(new { message = "Missing parameters for uploading grade." });
         }
-        int targetStudentId = studentIdElem.GetInt32();
-        int courseId = courseIdElem.GetInt32();
-        double gradeValue = gradeValueElem.GetDouble();
+        int targetStudentId = studentIdElem.ValueKind == JsonValueKind.Number
+            ? studentIdElem.GetInt32()
+            : int.Parse(studentIdElem.GetString() ?? "0");
+
+        int courseId = courseIdElem.ValueKind == JsonValueKind.Number
+            ? courseIdElem.GetInt32()
+            : int.Parse(courseIdElem.GetString() ?? "0");
+
+        double gradeValue = gradeValueElem.ValueKind == JsonValueKind.Number
+            ? gradeValueElem.GetDouble()
+            : double.Parse(gradeValueElem.GetString() ?? "0");
+
 
         if (gradeValue < 0.0 || gradeValue > 4.0)
             return Results.BadRequest(new { message = "Grade must be between 0.0 and 4.0" });

@@ -29,6 +29,7 @@ app.MapPost("/config", async (HttpContext context) =>
 // POST /query endpoint to handle grade-related actions. 
 app.MapPost("/query", async (HttpContext context) => 
 { 
+    Console.WriteLine("[GradesDb] 🔁 /process handler hit (same logic as /query)");
     using var reader = new StreamReader(context.Request.Body); 
     string body = await reader.ReadToEndAsync(); 
     var payload = JsonDocument.Parse(body).RootElement;
@@ -40,28 +41,44 @@ app.MapPost("/query", async (HttpContext context) =>
     // Action: getGrades – Return a list of grade records for the given student.
     if (action == "getGrades")
     {
-        if (!payload.TryGetProperty("studentId", out JsonElement studentIdElem))
-            return Results.BadRequest(new { message = "Student ID not specified." });
-        
-        int studentId = studentIdElem.GetInt32();
-        var grades = new List<object>();
+        if (!context.Request.Headers.TryGetValue("studentId", out var studentIdHeader))
+            return Results.BadRequest(new { message = "Student ID missing" });
 
-        using var conn = new SqliteConnection($"Data Source={dbPath}");
-        await conn.OpenAsync();
+        Console.WriteLine($"[GradesDb1] studentIdHeader received: {studentIdHeader}");
 
-        var cmd = conn.CreateCommand();
-        cmd.CommandText = "SELECT course_id, grade FROM Grades WHERE student_id = @studentId;";
-        cmd.Parameters.AddWithValue("@studentId", studentId);
-
-        using var dbReader = await cmd.ExecuteReaderAsync();
-        while (await dbReader.ReadAsync())
+        try
         {
-            int courseId = dbReader.GetInt32(0);
-            double gradeValue = dbReader.GetDouble(1);
-            // CourseName defaults to "N/A"; it can be augmented later by the GradesController.
-            grades.Add(new { CourseId = courseId, GradeValue = gradeValue, CourseName = "N/A" });
+            int studentId = int.Parse(studentIdHeader!);
+            var conn = new SqliteConnection($"Data Source={dbPath}");
+            await conn.OpenAsync();
+
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = @"
+                SELECT g.course_id, g.grade
+                FROM Grades g
+                WHERE g.student_id = $sid;
+
+                ";
+            cmd.Parameters.AddWithValue("$sid", studentId);
+
+            var grades = new List<object>();
+            using var readerDb = await cmd.ExecuteReaderAsync();
+            while (await readerDb.ReadAsync())
+            {
+                grades.Add(new
+                {
+                    courseId = readerDb.GetInt32(0),
+                    gradeValue = readerDb.GetDouble(1)
+                });
+            }
+
+            return Results.Json(grades);
         }
-        return Results.Json(grades);
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[GradesDb1] ERROR: {ex.Message}");
+            return Results.Problem($"Grades DB error: {ex.Message}");
+        }
     }
     // Action: uploadGrade – Insert a grade record into the Grades table.
     else if (action == "uploadGrade")

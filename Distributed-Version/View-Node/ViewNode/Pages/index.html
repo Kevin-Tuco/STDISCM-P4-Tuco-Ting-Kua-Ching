@@ -142,6 +142,7 @@
                     jwtToken = data.token;
                     const payload = JSON.parse(atob(jwtToken.split('.')[1]));
                     const role = payload.role || payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+                    console.log("👀 Full decoded payload:", payload);
                     // Extract the student id from the token payload.
                     loggedInUserId = parseInt(payload.studentId);
                     userNameDisplay.textContent = username;
@@ -155,8 +156,10 @@
                         loadGrades();
                         loadEnrolledCourses();
                     } else if (role == 'teacher') {
-                        teacherDashboard.classList.remove('hidden');
-                        loadTeacherCourses(payload.user_id);
+                        const teacherId = payload.studentId || null;
+                        console.log("Teacher ID from token:", teacherId);
+                        teacherDashboard.classList.remove('hidden'); 
+                        loadTeacherCourses(teacherId)
                     }
                 } else {
                     showError(data.message || 'Login failed');
@@ -236,12 +239,19 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + jwtToken
+                        'Authorization': 'Bearer ' + jwtToken,
+                        'studentId': loggedInUserId.toString() // ✅ Add this header
                     },
-                    body: JSON.stringify({ action: 'getGrades' , studentId: loggedInUserId})
+                    body: JSON.stringify({ action: 'getGrades' })
                 });
                 const grades = await res.json();
-                console.log(grades);
+                console.log("Grades response:", grades);
+
+                if (!Array.isArray(grades)) {
+                    showError("Grades is not an array. Raw response: " + JSON.stringify(grades));
+                    return;
+                }
+
                 const tableBody = document.querySelector('#grade-table tbody');
                 tableBody.innerHTML = '';
                 grades.forEach(g => {
@@ -249,13 +259,14 @@
                         <td>${g.courseId}</td>
                         <td>${g.courseName || 'N/A'}</td>
                         <td>${g.gradeValue}</td>
-                        </tr>`;
+                    </tr>`;
                 });
             } catch (error) {
                 console.error('Error loading grades:', error);
                 showError('Error loading grades: ' + error);
             }
         }
+
     
         document.getElementById('logout-button').addEventListener('click', () => {
             jwtToken = null;
@@ -304,48 +315,87 @@
                     },
                     body: JSON.stringify({ action: 'getCourses' })
                 });
+
                 const courses = await res.json();
                 const select = document.getElementById('teacher-course-select');
                 select.innerHTML = '<option value="">-- Select a Course --</option>';
-                courses.filter(c => parseInt(c.teacherId) === parseInt(teacherId))
-                    .forEach(c => {
-                        const option = document.createElement('option');
-                        option.value = c.courseId;
-                        option.textContent = c.courseName;
-                        select.appendChild(option);
-                    });
-    
-                select.addEventListener('change', async () => {
-                    const courseId = select.value;
-                    if(!courseId) return;
-                    try {
-                        const res = await fetch(`${brokerBaseUrl}/api/forward/controller/CoursesController`, {
-                            method: 'POST',
-                            headers: { 
-                                'Content-Type': 'application/json',
-                                'Authorization': 'Bearer ' + jwtToken 
-                            },
-                            body: JSON.stringify({ action: 'getEnrollments', courseId: parseInt(courseId) })
-                        });
-                        const students = await res.json();
-                        const studentSelect = document.getElementById('student-select');
-                        studentSelect.innerHTML = '<option value="">-- Select a Student --</option>';
-                        students.forEach(s => {
-                            const opt = document.createElement('option');
-                            opt.value = s.userId;
-                            opt.textContent = s.username;
-                            studentSelect.appendChild(opt);
-                        });
-                    } catch (error) {
-                        console.error('Error loading enrolled students:', error);
-                        showError('Error loading enrolled students: ' + error);
-                    }
+
+                const filteredCourses = courses.filter(c => parseInt(c.teacherId) === parseInt(teacherId));
+                console.log("Filtered courses for teacher:", filteredCourses);
+
+                filteredCourses.forEach(c => {
+                    const option = document.createElement('option');
+                    option.value = c.courseId;
+                    option.textContent = c.courseName;
+                    select.appendChild(option);
                 });
+
+                // ✅ Safely remove any previous listeners, then add one cleanly
+                select.removeEventListener('change', handleCourseChange);
+                select.addEventListener('change', handleCourseChange);
+
             } catch (error) {
                 console.error('Error loading teacher courses:', error);
                 showError('Error loading teacher courses: ' + error);
             }
         }
+
+        // ✅ Move this outside as a separate function
+        async function handleCourseChange() {
+            const courseId = document.getElementById('teacher-course-select').value;
+
+            console.log("📤 Sending payload to getEnrollments:", {
+                action: 'getEnrollments',
+                courseId: parseInt(courseId)
+            });
+
+            if (!courseId) return;
+
+            try {
+                const res = await fetch(`${brokerBaseUrl}/api/forward/controller/CoursesController`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + jwtToken
+                    },
+                    body: JSON.stringify({ action: 'getEnrollments', courseId: parseInt(courseId) })
+                });
+
+                const text = await res.text(); // 🔁 read raw response
+                let students = [];
+
+                try {
+                    students = JSON.parse(text); // ✅ safe parse
+                } catch (err) {
+                    console.error("❌ Failed to parse JSON:", text);
+                    showError("Invalid JSON from server: " + text);
+                    return;
+                }
+
+                console.log("👥 Students returned:", students);
+
+                const studentSelect = document.getElementById('student-select');
+                studentSelect.innerHTML = '<option value="">-- Select a Student --</option>';
+
+                if (!Array.isArray(students)) {
+                    showError("❌ Invalid students data: " + JSON.stringify(students));
+                    return;
+                }
+
+                students.forEach(s => {
+                    const opt = document.createElement('option');
+                    opt.value = s.userId;
+                    opt.textContent = s.username;
+                    studentSelect.appendChild(opt);
+                });
+
+            } catch (error) {
+                console.error('Error loading enrolled students:', error);
+                showError('Error loading enrolled students: ' + error);
+            }
+        }
+
+
     
         document.getElementById('upload-grade-form').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -353,6 +403,7 @@
             const courseId = document.getElementById('teacher-course-select').value;
             const gradeValue = document.getElementById('grade-value').value;
             if (!studentId || !courseId || !gradeValue) return alert('Fill all fields.');
+
             try {
                 const res = await fetch(`${brokerBaseUrl}/api/forward/controller/GradesController`, {
                     method: 'POST',
@@ -362,7 +413,17 @@
                     },
                     body: JSON.stringify({ action: 'uploadGrade', studentId, courseId, gradeValue: parseFloat(gradeValue) })
                 });
-                const data = await res.json();
+
+                const text = await res.text(); // read raw response
+                let data = {};
+                try {
+                    data = JSON.parse(text);
+                } catch {
+                    console.error('❌ Backend returned non-JSON:', text);
+                    showError("Server error: " + text);
+                    return;
+                }
+
                 if (res.ok) {
                     alert(data.message || 'Grade submitted');
                 } else {
@@ -373,7 +434,7 @@
                 showError('Error uploading grade: ' + error);
             }
         });
-    
+
         function showError(message) {
             errorDetails.textContent = message;
             errorTab.classList.remove('hidden');

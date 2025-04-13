@@ -101,6 +101,15 @@ app.MapPost("/process", async (HttpContext context) =>
         }
         payloadObj = new { action = "enroll", courseId = courseId };
     }
+    else if (action == "getEnrollments")
+    {
+        // Extract courseId from payload
+        if (!root.TryGetProperty("courseId", out JsonElement courseIdElem))
+            return Results.BadRequest(new { message = "Missing courseId" });
+
+        int courseId = courseIdElem.GetInt32();
+        payloadObj = new { action = "getEnrollments", courseId };
+    }
     else
     {
         return Results.BadRequest(new { message = $"Unsupported action: {action}" });
