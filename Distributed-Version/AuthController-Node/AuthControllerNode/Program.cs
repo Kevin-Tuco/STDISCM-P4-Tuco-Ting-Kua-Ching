@@ -16,16 +16,18 @@ builder.Services.AddHttpClient();
 var config = builder.Configuration;
 string brokerUrl = config["Broker:BaseUrl"];
 
-var allowedOrigins = "_myAllowSpecificOrigins";
+var allowedOrigins = "_allowAllFromView";
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: allowedOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("http://localhost:5001")
-                                .AllowAnyHeader()
-                                .AllowAnyMethod();
-                      });
+    options.AddPolicy(name: allowedOrigins, policy =>
+    {
+        policy.WithOrigins(
+            "http://localhost:5001",
+            "http://192.168.68.110:5001"
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
 });
 
 builder.Services.AddHttpClient();
