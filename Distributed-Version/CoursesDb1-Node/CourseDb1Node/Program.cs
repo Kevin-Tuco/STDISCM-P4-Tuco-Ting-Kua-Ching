@@ -251,7 +251,40 @@ app.MapPost("/query", async (HttpContext context) =>
 
         return Results.Ok(new { message = "Enrolled successfully!" });
     }
-    return Results.BadRequest(new { message = $"Unsupported action: {action}" });
+    else if (action == "removeEnrollment")
+    {
+        if (!payload.TryGetProperty("studentId", out JsonElement sidElem) ||
+            !payload.TryGetProperty("courseId", out JsonElement cidElem))
+        {
+            return Results.BadRequest(new { message = "Missing studentId or courseId." });
+        }
+
+        int studentId = sidElem.ValueKind == JsonValueKind.Number
+            ? sidElem.GetInt32()
+            : int.Parse(sidElem.GetString() ?? "0");
+
+        int courseId = cidElem.ValueKind == JsonValueKind.Number
+            ? cidElem.GetInt32()
+            : int.Parse(cidElem.GetString() ?? "0");
+
+        var deleteCmd = conn.CreateCommand();
+        deleteCmd.CommandText = "DELETE FROM Enrollment WHERE student_id = $sid AND course_id = $cid;";
+        deleteCmd.Parameters.AddWithValue("$sid", studentId);
+        deleteCmd.Parameters.AddWithValue("$cid", courseId);
+
+        int affected = await deleteCmd.ExecuteNonQueryAsync();
+
+        return Results.Ok(new
+        {
+            message = affected > 0
+                ? $"Student {studentId} removed from course {courseId}."
+                : $"No enrollment found for student {studentId} in course {courseId}."
+        });
+    }
+    else
+    {
+        return Results.BadRequest(new { message = $"Unsupported action: {action}" });
+    }
 
 
 });
