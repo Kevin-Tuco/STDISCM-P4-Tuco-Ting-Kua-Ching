@@ -7,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
 var app = builder.Build();
 
-string brokerUrl = "http://localhost:5000";
+var config = builder.Configuration;
+string brokerUrl = config["Broker:BaseUrl"];
 
 // GET /status endpoint remains the same
 app.MapGet("/status", () =>

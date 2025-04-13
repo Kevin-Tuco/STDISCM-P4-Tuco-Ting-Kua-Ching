@@ -13,14 +13,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 
-var allowedOrigins = "_allowViewNode";
+var allowedOrigins = "_allowAllFromView";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: allowedOrigins, policy =>
     {
-        policy.WithOrigins("http://localhost:5001")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        policy.WithOrigins(
+            "http://localhost:5001",
+            "http://192.168.68.110:5001"
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod();
     });
 });
 

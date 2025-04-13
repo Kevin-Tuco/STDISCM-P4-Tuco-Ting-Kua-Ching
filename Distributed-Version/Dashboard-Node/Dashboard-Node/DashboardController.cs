@@ -12,14 +12,14 @@ public class DashboardController : Controller
     {
         _clientFactory = clientFactory;
         // Read the Broker BaseUrl from configuration.
-        brokerUrl = config.GetSection("Broker")["BaseUrl"] + "/api/nodes";
+        brokerUrl = config.GetSection("Broker")["BaseUrl"];
     }
 
     // Show all nodes.
     public async Task<IActionResult> Index()
     {
         var client = _clientFactory.CreateClient();
-        var nodes = await client.GetFromJsonAsync<IEnumerable<NodeStatus>>(brokerUrl);
+        var nodes = await client.GetFromJsonAsync<IEnumerable<NodeStatus>>(brokerUrl + "/api/nodes");
         return View(nodes);
     }
     
@@ -27,7 +27,7 @@ public class DashboardController : Controller
     public async Task<IActionResult> Update(string nodeName, bool isActivated, int latency)
     {
         var client = _clientFactory.CreateClient();
-        var updateUrl = $"http://localhost:5000/api/node/update/{nodeName}";
+        var updateUrl = $"{brokerUrl}/api/node/update/{nodeName}";
         var update = new NodeUpdate { IsActivated = isActivated, Latency = latency };
         var response = await client.PostAsJsonAsync(updateUrl, update);
         if (!response.IsSuccessStatusCode)
