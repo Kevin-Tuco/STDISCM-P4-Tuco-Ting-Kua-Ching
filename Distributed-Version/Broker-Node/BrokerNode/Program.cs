@@ -40,22 +40,22 @@ var nodes = new ConcurrentDictionary<string, NodeStatus>();
 // Then DB nodes: two for each table (Courses, Grades, Users)
 var initialNodes = new List<NodeStatus>
 {
-    new NodeStatus { Name = "View Node", Url = "http://192.168.68.110:5001", IsOnline = false, IsActivated = false, Latency = 0 },
-    new NodeStatus { Name = "AuthController", Url = "http://192.168.68.132:5002", IsOnline = false, IsActivated = false, Latency = 0 },
-    new NodeStatus { Name = "CoursesController", Url = "http://192.168.68.132:5003", IsOnline = false, IsActivated = false, Latency = 0 },
-    new NodeStatus { Name = "GradesController", Url = "http://192.168.68.132:5004", IsOnline = false, IsActivated = false, Latency = 0 },
+    new NodeStatus { Name = "View Node", Url = "http://localhost:5001", IsOnline = false, IsActivated = false, Latency = 0 },
+    new NodeStatus { Name = "AuthController", Url = "http://localhost:5002", IsOnline = false, IsActivated = false, Latency = 0 },
+    new NodeStatus { Name = "CoursesController", Url = "http://localhost:5003", IsOnline = false, IsActivated = false, Latency = 0 },
+    new NodeStatus { Name = "GradesController", Url = "http://localhost:5004", IsOnline = false, IsActivated = false, Latency = 0 },
     new NodeStatus { Name = "ScheduleController", Url = "http://localhost:5005", IsOnline = false, IsActivated = false, Latency = 0 },
     
     // DB Nodes for Courses
-    new NodeStatus { Name = "CoursesDb1", Url = "http://192.168.68.135:5006", IsOnline = false, IsActivated = false, Latency = 0 },
+    new NodeStatus { Name = "CoursesDb1", Url = "http://localhost:5006", IsOnline = false, IsActivated = false, Latency = 0 },
     new NodeStatus { Name = "CoursesDb2", Url = "http://localhost:5007", IsOnline = false, IsActivated = false, Latency = 0 },
 
     // DB Nodes for Grades
-    new NodeStatus { Name = "GradesDb1", Url = "http://192.168.68.135:5008", IsOnline = false, IsActivated = false, Latency = 0 },
+    new NodeStatus { Name = "GradesDb1", Url = "http://localhost:5008", IsOnline = false, IsActivated = false, Latency = 0 },
     new NodeStatus { Name = "GradesDb2", Url = "http://localhost:5009", IsOnline = false, IsActivated = false, Latency = 0 },
 
     // DB Nodes for Users
-    new NodeStatus { Name = "UsersDb1", Url = "http://192.168.68.135:5010", IsOnline = false, IsActivated = false, Latency = 0 },
+    new NodeStatus { Name = "UsersDb1", Url = "http://localhost:5010", IsOnline = false, IsActivated = false, Latency = 0 },
     new NodeStatus { Name = "UsersDb2", Url = "http://localhost:5011", IsOnline = false, IsActivated = false, Latency = 0 }
 };
 
