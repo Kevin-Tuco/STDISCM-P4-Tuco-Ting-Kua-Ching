@@ -85,6 +85,39 @@ app.MapPost("/query", async (HttpContext context) =>
             return Results.Problem($"Grades DB error: {ex.Message}");
         }
     }
+        else if (action == "getGradeHistory")
+        {
+            if (!context.Request.Headers.TryGetValue("studentId", out var sidHeader))
+                return Results.BadRequest(new { message = "Student ID missing" });
+
+            int studentId = int.Parse(sidHeader!);
+
+            var conn = new SqliteConnection($"Data Source={dbPath}");
+            await conn.OpenAsync();
+
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = @"
+                SELECT course_id, grade, graded_at
+                FROM Grades
+                WHERE student_id = $sid
+                ORDER BY course_id, graded_at";
+            cmd.Parameters.AddWithValue("$sid", studentId);
+
+            var gradeHistory = new List<object>();
+            using var dbReader = await cmd.ExecuteReaderAsync();
+            while (await dbReader.ReadAsync())
+            {
+                gradeHistory.Add(new
+                {
+                    courseId = dbReader.GetInt32(0),
+                    gradeValue = dbReader.GetDouble(1),
+                    gradedAt = dbReader.GetString(2)
+                });
+            }
+
+            return Results.Json(gradeHistory);
+        }   
+
     // Action: uploadGrade – Insert a grade record into the Grades table.
     else if (action == "uploadGrade")
     {
@@ -149,8 +182,6 @@ app.MapPost("/query", async (HttpContext context) =>
 
         return Results.Json(new { hasPassed = false });
     }
-
-
     else
     {
         return Results.BadRequest(new { message = $"Unsupported action: {action}" });

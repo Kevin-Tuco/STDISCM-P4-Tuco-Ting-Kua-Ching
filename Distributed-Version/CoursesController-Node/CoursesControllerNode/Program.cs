@@ -99,6 +99,7 @@ app.MapPost("/process", async (HttpContext context) =>
         {
             return Results.BadRequest(new { message = "Student ID missing." });
         }
+        
         // Call GradesController to check if student passed
         var gradesNodes = allNodes.Where(n => n.Name.StartsWith("GradesDb") && n.IsOnline).ToList();
         if (!gradesNodes.Any())

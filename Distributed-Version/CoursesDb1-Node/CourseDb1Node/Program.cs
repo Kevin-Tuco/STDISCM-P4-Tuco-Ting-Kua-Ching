@@ -208,9 +208,12 @@ app.MapPost("/query", async (HttpContext context) =>
         checkCmd.Parameters.AddWithValue("$sid", studentId);
         checkCmd.Parameters.AddWithValue("$cid", courseId);
 
-        if ((long)await checkCmd.ExecuteScalarAsync() > 0)
-            return Results.BadRequest(new { message = "Already enrolled in this course." });
-
+        long enrollmentCount = (long)await checkCmd.ExecuteScalarAsync();
+        if (enrollmentCount > 0)
+        {
+            // If student is already enrolled, return an error message
+            return Results.BadRequest(new { message = "Student has already enrolled in this course." });
+        }
         // 🔥 Check if student has already passed this course
         try
         {

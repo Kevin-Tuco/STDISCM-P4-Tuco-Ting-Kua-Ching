@@ -105,6 +105,7 @@ app.MapPost("/process", async (HttpContext context) =>
         }
         return Results.Ok(grades);
     }
+    
     else if (action == "uploadGrade")
     {
         if (!root.TryGetProperty("studentId", out JsonElement studentIdElem) ||

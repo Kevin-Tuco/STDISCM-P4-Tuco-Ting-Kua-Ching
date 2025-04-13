@@ -185,6 +185,12 @@
                     },
                     body: JSON.stringify({ action: 'getCourses' })
                 });
+
+                if (!res.ok) {
+                    const errorData = await res.json();
+                    showError("Error: " + errorData.message); // Show backend message on error
+                    return;
+                }
                 const courses = await res.json();
                 console.log("Courses response:", courses);
                 const tableBody = document.querySelector('#course-table tbody');
@@ -398,52 +404,56 @@
 
     
         document.getElementById('upload-grade-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const studentId = document.getElementById('student-select').value;
-            const courseId = document.getElementById('teacher-course-select').value;
-            const gradeValue = document.getElementById('grade-value').value;
-            if (!studentId || !courseId || !gradeValue) return alert('Fill all fields.');
+        e.preventDefault();
+        const studentId = document.getElementById('student-select').value;
+        const courseId = document.getElementById('teacher-course-select').value;
+        const gradeValue = document.getElementById('grade-value').value;
+        if (!studentId || !courseId || !gradeValue) return alert('Fill all fields.');
 
+        try {
+            const res = await fetch(`${brokerBaseUrl}/api/forward/controller/GradesController`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + jwtToken
+                },
+                body: JSON.stringify({ action: 'uploadGrade', studentId, courseId, gradeValue: parseFloat(gradeValue) })
+            });
+
+            const text = await res.text(); // read raw response
+            let data = {};
             try {
-                const res = await fetch(`${brokerBaseUrl}/api/forward/controller/GradesController`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + jwtToken
-                    },
-                    body: JSON.stringify({ action: 'uploadGrade', studentId, courseId, gradeValue: parseFloat(gradeValue) })
-                });
-
-                const text = await res.text(); // read raw response
-                let data = {};
-                try {
-                    data = JSON.parse(text);
-                } catch {
-                    console.error('❌ Backend returned non-JSON:', text);
-                    showError("Server error: " + text);
-                    return;
-                }
-
-                if (res.ok) {
-                    alert(data.message || 'Grade submitted');
-                } else {
-                    showError(data.message || 'Grade submission failed.');
-                }
-            } catch (error) {
-                console.error('Error uploading grade:', error);
-                showError('Error uploading grade: ' + error);
+                data = JSON.parse(text);
+            } catch {
+                console.error('❌ Backend returned non-JSON:', text);
+                showError("Server error: " + text);
+                return;
             }
-        });
 
-        function showError(message) {
-            errorDetails.textContent = message;
-            errorTab.classList.remove('hidden');
+            if (res.ok) {
+                alert(data.message || 'Grade submitted');
+            } else {
+                showError(data.message || 'Grade submission failed.');
+            }
+        } catch (error) {
+            console.error('Error uploading grade:', error);
+            showError('Error uploading grade: ' + error);
         }
-    
-        function hideError() {
-            errorDetails.textContent = '';
-            errorTab.classList.add('hidden');
-        }
+    });
+
+    // Function to display errors
+    function showError(message) {
+        const errorDetails = document.getElementById('error-details');
+        const errorTab = document.getElementById('error-tab');
+        errorDetails.textContent = message;
+        errorTab.classList.remove('hidden');
+    }
+
+    // Function to hide errors
+    function hideError() {
+        const errorTab = document.getElementById('error-tab');
+        errorTab.classList.add('hidden');
+    }
     </script>
 </body>
 </html>
