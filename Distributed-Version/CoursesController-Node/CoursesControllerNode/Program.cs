@@ -73,7 +73,7 @@ app.MapPost("/process", async (HttpContext context) =>
     List<NodeStatus> allNodes = JsonSerializer.Deserialize<List<NodeStatus>>(statusContent, options);
 
     // Select available Courses DB nodes.
-    var coursesNodes = allNodes.Where(n => n.Name.StartsWith("CoursesDb") && n.IsOnline).ToList();
+    var coursesNodes = allNodes.Where(n => n.Name.StartsWith("CoursesDb") && n.IsOnline && n.IsActivated).ToList();
     if (!coursesNodes.Any())
         return Results.BadRequest(new { message = "No Courses DB nodes are online." });
 
@@ -101,7 +101,7 @@ app.MapPost("/process", async (HttpContext context) =>
         }
         
         // Call GradesController to check if student passed
-        var gradesNodes = allNodes.Where(n => n.Name.StartsWith("GradesDb") && n.IsOnline).ToList();
+        var gradesNodes = allNodes.Where(n => n.Name.StartsWith("GradesDb") && n.IsOnline && n.IsActivated).ToList();
         if (!gradesNodes.Any())
             return Results.Problem("No Grades DB nodes online to verify past grades.");
 

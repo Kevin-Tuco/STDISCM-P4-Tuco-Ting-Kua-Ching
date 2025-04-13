@@ -96,7 +96,7 @@ app.MapPost("/process", async (HttpContext context) =>
     }
 
     // Filter for Users DB nodes that are online.
-    var usersDbNodes = allNodes.Where(n => n.Name.StartsWith("UsersDb") && n.IsOnline).ToList();
+    var usersDbNodes = allNodes.Where(n => n.Name.StartsWith("UsersDb") && n.IsOnline && n.IsActivated).ToList();
     if (usersDbNodes.Count == 0)
     {
         return Results.Json(new { message = "No Users DB nodes are currently online." }, statusCode: 400);

@@ -58,7 +58,7 @@ app.MapPost("/process", async (HttpContext context) =>
     if (action == "getGrades")
     {
         // Use Grades DB node to get the grades.
-        var gradesNodes = allNodes.Where(n => n.Name.StartsWith("GradesDb") && n.IsOnline).ToList();
+        var gradesNodes = allNodes.Where(n => n.Name.StartsWith("GradesDb") && n.IsOnline && n.IsActivated).ToList();
         if (!gradesNodes.Any())
             return Results.BadRequest(new { message = "No Grades DB nodes are online." });
         NodeStatus chosenGradesDb = gradesNodes.OrderBy(n => n.Latency).First();
@@ -84,7 +84,7 @@ app.MapPost("/process", async (HttpContext context) =>
         var grades = JsonSerializer.Deserialize<List<GradeRecord>>(dbResultRaw, options);
 
         // For each grade, fetch the course name via Courses DB node.
-        var coursesNodes = allNodes.Where(n => n.Name.StartsWith("CoursesDb") && n.IsOnline).ToList();
+        var coursesNodes = allNodes.Where(n => n.Name.StartsWith("CoursesDb") && n.IsOnline && n.IsActivated).ToList();
         foreach (var grade in grades)
         {
             if (grade.CourseId != 0 && coursesNodes.Any())
@@ -131,7 +131,7 @@ app.MapPost("/process", async (HttpContext context) =>
             return Results.BadRequest(new { message = "Grade must be between 0.0 and 4.0" });
 
         // Use Grades DB node for updating/inserting the grade.
-        var gradesNodes = allNodes.Where(n => n.Name.StartsWith("GradesDb") && n.IsOnline).ToList();
+        var gradesNodes = allNodes.Where(n => n.Name.StartsWith("GradesDb") && n.IsOnline && n.IsActivated).ToList();
         if (!gradesNodes.Any())
             return Results.BadRequest(new { message = "No Grades DB nodes are online." });
         NodeStatus chosenGradesDb = gradesNodes.OrderBy(n => n.Latency).First();
@@ -146,7 +146,7 @@ app.MapPost("/process", async (HttpContext context) =>
         }
 
         // Use Courses DB node to remove the enrollment record.
-        var coursesNodes = allNodes.Where(n => n.Name.StartsWith("CoursesDb") && n.IsOnline).ToList();
+        var coursesNodes = allNodes.Where(n => n.Name.StartsWith("CoursesDb") && n.IsOnline && n.IsActivated).ToList();
         if (!coursesNodes.Any())
             return Results.BadRequest(new { message = "No Courses DB nodes are online for enrollment update." });
         NodeStatus chosenCoursesDb = coursesNodes.OrderBy(n => n.Latency).First();
