@@ -99,6 +99,41 @@ app.MapPost("/process", async (HttpContext context) =>
         {
             return Results.BadRequest(new { message = "Student ID missing." });
         }
+        // Call GradesController to check if student passed
+        var gradesNodes = allNodes.Where(n => n.Name.StartsWith("GradesDb") && n.IsOnline).ToList();
+        if (!gradesNodes.Any())
+            return Results.Problem("No Grades DB nodes online to verify past grades.");
+
+        NodeStatus chosenGradesDb = gradesNodes.OrderBy(n => n.Latency).First();
+
+        var checkPassPayload = new
+        {
+            action = "hasPassed",
+            studentId,
+            courseId
+        };
+
+        var checkPassRequest = new HttpRequestMessage(HttpMethod.Post, $"{chosenGradesDb.Url}/query")
+        {
+            Content = new StringContent(JsonSerializer.Serialize(checkPassPayload), Encoding.UTF8, "application/json")
+        };
+        await Task.Delay(chosenGradesDb.Latency);
+
+        var passResponse = await httpClient.SendAsync(checkPassRequest);
+        var passBody = await passResponse.Content.ReadAsStringAsync();
+        if (passResponse.IsSuccessStatusCode)
+        {
+            var passJson = JsonDocument.Parse(passBody).RootElement;
+            if (passJson.TryGetProperty("hasPassed", out var hasPassedElem) && hasPassedElem.GetBoolean())
+            {
+                return Results.BadRequest(new { message = "Cannot re-enroll: student has already passed this course." });
+            }
+        }
+        else
+        {
+            return Results.Problem($"Error checking past grade: {passBody}");
+        }
+
         payloadObj = new { action = "enroll", courseId = courseId };
     }
     else if (action == "getEnrollments")

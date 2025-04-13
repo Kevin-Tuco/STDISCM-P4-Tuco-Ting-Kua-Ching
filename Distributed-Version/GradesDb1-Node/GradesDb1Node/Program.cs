@@ -56,8 +56,13 @@ app.MapPost("/query", async (HttpContext context) =>
             cmd.CommandText = @"
                 SELECT g.course_id, g.grade
                 FROM Grades g
+                JOIN (
+                    SELECT course_id, MAX(grade_id) AS latest
+                    FROM Grades
+                    WHERE student_id = $sid
+                    GROUP BY course_id
+                ) latestGrades ON g.course_id = latestGrades.course_id AND g.grade_id = latestGrades.latest
                 WHERE g.student_id = $sid;
-
                 ";
             cmd.Parameters.AddWithValue("$sid", studentId);
 
@@ -113,6 +118,39 @@ app.MapPost("/query", async (HttpContext context) =>
             return Results.BadRequest(new { message = "Failed to upload grade." });
         }
     }
+    else if (action == "hasPassed")
+    {
+        if (!payload.TryGetProperty("studentId", out JsonElement sidElem) ||
+            !payload.TryGetProperty("courseId", out JsonElement cidElem))
+        {
+            return Results.BadRequest(new { message = "Missing studentId or courseId." });
+        }
+
+        int studentId = sidElem.GetInt32();
+        int courseId = cidElem.GetInt32();
+
+        using var conn = new SqliteConnection($"Data Source={dbPath}");
+        await conn.OpenAsync();
+
+        var checkCmd = conn.CreateCommand();
+        checkCmd.CommandText = @"
+            SELECT grade FROM Grades 
+            WHERE student_id = $sid AND course_id = $cid";
+        checkCmd.Parameters.AddWithValue("$sid", studentId);
+        checkCmd.Parameters.AddWithValue("$cid", courseId);
+
+        using var gradeReader = await checkCmd.ExecuteReaderAsync();
+        while (await gradeReader.ReadAsync())
+        {
+            double grade = gradeReader.GetDouble(0);
+            if (grade > 0.0)
+                return Results.Json(new { hasPassed = true });
+        }
+
+        return Results.Json(new { hasPassed = false });
+    }
+
+
     else
     {
         return Results.BadRequest(new { message = $"Unsupported action: {action}" });
@@ -128,12 +166,13 @@ void EnsureDatabase(string path) {
         using var conn = new SqliteConnection($"Data Source={path}"); conn.Open();
         var cmd = conn.CreateCommand();
         cmd.CommandText = @"
-            CREATE TABLE IF NOT EXISTS Grades (
-                grade_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                student_id INTEGER NOT NULL,
-                course_id INTEGER NOT NULL,
-                grade REAL NOT NULL
-            );
+        CREATE TABLE IF NOT EXISTS Grades (
+            grade_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            student_id INT NOT NULL,
+            course_id INT NOT NULL,
+            grade REAL NOT NULL,
+            graded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
         ";
     cmd.ExecuteNonQuery();
     }

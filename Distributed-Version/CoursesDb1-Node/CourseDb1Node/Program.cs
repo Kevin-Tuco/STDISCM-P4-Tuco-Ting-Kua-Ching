@@ -199,7 +199,7 @@ app.MapPost("/query", async (HttpContext context) =>
         int studentId = int.Parse(studentIdHeader!);
         int courseId = payload.GetProperty("courseId").GetInt32();
 
-        // Check if already enrolled
+        // ❌ Check if already enrolled in this course
         var checkCmd = conn.CreateCommand();
         checkCmd.CommandText = @"
             SELECT COUNT(*) 
@@ -211,7 +211,7 @@ app.MapPost("/query", async (HttpContext context) =>
         if ((long)await checkCmd.ExecuteScalarAsync() > 0)
             return Results.BadRequest(new { message = "Already enrolled in this course." });
 
-        // 🔥 Check if student already passed this course before (grade > 0.0)
+        // 🔥 Check if student has already passed this course
         try
         {
             using var gradesConn = new SqliteConnection("Data Source=grades1.db");
@@ -220,27 +220,29 @@ app.MapPost("/query", async (HttpContext context) =>
             var checkGradeCmd = gradesConn.CreateCommand();
             checkGradeCmd.CommandText = @"
                 SELECT grade FROM Grades 
-                WHERE student_id = $sid AND course_id = $cid";
+                WHERE student_id = $sid AND course_id = $cid
+                ORDER BY attempt_timestamp DESC
+                LIMIT 1";
             checkGradeCmd.Parameters.AddWithValue("$sid", studentId);
             checkGradeCmd.Parameters.AddWithValue("$cid", courseId);
 
             using var gradeReader = await checkGradeCmd.ExecuteReaderAsync();
             if (await gradeReader.ReadAsync())
             {
-                double existingGrade = gradeReader.GetDouble(0);
-                if (existingGrade > 0.0)
+                double latestGrade = gradeReader.GetDouble(0);
+                if (latestGrade > 0.0)
                 {
                     return Results.BadRequest(new { message = "Cannot re-enroll: student has already passed this course." });
                 }
             }
         }
-        catch (Exception ex)
+        catch (SqliteException ex)
         {
             Console.WriteLine($"[CoursesDb] ⚠️ Grade check failed: {ex.Message}");
-            // Optional: decide if you want to allow enrollment or block it
+            // Allow enrollment if Grades table does not exist or is inaccessible
         }
 
-        // Insert enrollment record
+        // ✅ Insert enrollment record
         var enrollCmd = conn.CreateCommand();
         enrollCmd.CommandText = @"
             INSERT INTO Enrollment (student_id, course_id, enrollment_date)
@@ -251,6 +253,7 @@ app.MapPost("/query", async (HttpContext context) =>
 
         return Results.Ok(new { message = "Enrolled successfully!" });
     }
+
     else if (action == "removeEnrollment")
     {
         if (!payload.TryGetProperty("studentId", out JsonElement sidElem) ||
