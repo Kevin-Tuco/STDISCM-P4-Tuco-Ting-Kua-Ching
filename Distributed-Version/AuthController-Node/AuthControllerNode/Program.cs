@@ -13,6 +13,9 @@ using System.Collections.Generic;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
 
+var config = builder.Configuration;
+string brokerUrl = config["Broker:BaseUrl"];
+
 var allowedOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
@@ -33,7 +36,6 @@ var app = builder.Build();
 app.UseCors(allowedOrigins);
 
 string secretKey = "YourVeryVeryVerySecureSecretKey123!";
-string brokerUrl = "http://localhost:5000";
 
 app.MapGet("/status", () =>
 {
