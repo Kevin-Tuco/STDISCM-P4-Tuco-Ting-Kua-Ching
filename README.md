@@ -22,9 +22,9 @@ For example, in the [video demo](https://drive.google.com/file/d/1B1SYGSHqpPAQ3E
 
 ```
 Local machine (192.168.68.110) - Dashboard, View node
-VM 1 (192.168.68.137) - Broker
-VM 2 (192.168.68.132) - AuthController, CoursesController, GradesController
-VM 3 (192.168.68.135) - UsersDB, CoursesDB, GradesDB
+Virtual machine 1 (192.168.68.137) - Broker
+Virtual machine 2 (192.168.68.132) - AuthController, CoursesController, GradesController
+Virtual machine 3 (192.168.68.135) - UsersDB, CoursesDB, GradesDB
 ```
 
 So, the URLs throughout the project were replaced as follows:
