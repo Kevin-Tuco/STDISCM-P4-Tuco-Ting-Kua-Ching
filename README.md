@@ -30,7 +30,7 @@ VM 3 (192.168.68.135) - UsersDB, CoursesDB, GradesDB
 So, the URLs throughout the project were replaced as follows:
 ```
 http://192.168.68.137:5000 = Broker
-http://.168.68.110:5001 = View node
+http://192.168.68.110:5001 = View node
 http://192.168.68.132:5002 = AuthController
 http://192.168.68.132:5003 = CoursesController
 http://192.168.68.132:5004 = GradesController
@@ -39,7 +39,7 @@ http://192.168.68.135:5008 = GradesDb1
 http://192.168.68.135:5010 = UsersDb1
 ```
 
-In total, there should be roughly 14 URLs throughout the system that are changed.
+In total, there should be roughly 14 URLs throughout the system that will be changed.
 
 
 ## How to Run
